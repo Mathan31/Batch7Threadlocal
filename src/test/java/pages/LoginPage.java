@@ -11,6 +11,7 @@ public class LoginPage extends BaseClass{
 	private By oSignInBtn = By.xpath("//button[text()='Sign In']");
 	private By oForgotLink = By.xpath("//*[text()='Register For Account']");
 	private By oRegisterLink = By.xpath("//*[text()='Register For Account']");
+	private By oLoginFailedInnerText = By.xpath("//div[contains(text(),'login failed')]");
 	
 	
 	public boolean verifyElement() {
@@ -39,7 +40,21 @@ public class LoginPage extends BaseClass{
 		driver.findElement(oSignInBtn).click();
 		return new HomePage();
 	}
+	
+	public LoginPage clickSingOnWithInValidCredential() {
+		driver.findElement(oSignInBtn).click();
+		return this;
+	}
 
+	public boolean validateLoginFailedText() {
+		boolean result = driver.findElement(oLoginFailedInnerText).isDisplayed();
+		return result;
+	}
+	
+	public RegistrationPage clickOnRegistrationLink() {
+		driver.findElement(oRegisterLink).click();
+		return new RegistrationPage();
+	}
 
 
 }
