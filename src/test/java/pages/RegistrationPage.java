@@ -17,6 +17,11 @@ public class RegistrationPage extends BaseClass{
 	private By oTitle = By.id("title");
 	private By oGender = By.id("sex");
 	private By oUILogo = By.xpath("//a[@class='navbar-brand']");
+	private By oEmploymentStatus = By.id("employmentStatus");
+	private By oAge = By.id("age");
+	private By oMartialStatus = By.id("maritalStatus");
+	private By oNumberOfDependents = By.id("numberOfDependents");
+	
 	
 	public boolean verifyAllTheFields() {
 		if(driver.findElement(oUserName).isDisplayed() && driver.findElement(oPassword).isDisplayed()
@@ -69,6 +74,27 @@ public class RegistrationPage extends BaseClass{
 		return this;
 	}
 	
+	public RegistrationPage enterEmploymentStatus(String employmentStatus) {
+		Select oSelect = new Select(driver.findElement(oEmploymentStatus));
+		oSelect.selectByVisibleText(employmentStatus);
+		return this;
+	}
+	
+	public RegistrationPage enterAge(String age) {
+		driver.findElement(oAge).sendKeys(age);
+		return this;	
+	}
+	
+	public RegistrationPage enterMartialStatus(String martialStatus) {
+		driver.findElement(oMartialStatus).sendKeys(martialStatus);
+		return this;
+	}
+	
+	public RegistrationPage enterNumberOfDependents(String noOfDependents) {
+		driver.findElement(oNumberOfDependents).sendKeys(noOfDependents);
+		return this;
+	}
+	
 	public EmailVerificationPage clickRegisterLink() {
 		driver.findElement(oRegister).click();
 		return new EmailVerificationPage();
@@ -78,6 +104,7 @@ public class RegistrationPage extends BaseClass{
 		driver.findElement(oUILogo).click();
 		return new LoginPage();
 	}
+	
 	
 
 }
