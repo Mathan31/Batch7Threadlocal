@@ -37,9 +37,25 @@ public class TC002_Registration extends BaseClass{
 		.clickOnLogin();
 	}
 	
-	//@Test(priority = 3)
+	@Test(priority = 3)
 	public void registrationWithMandatoryAndOptionalFields() {
-		
+		new LoginPage()
+		.clickOnRegistrationLink()
+		.enterFirstName("Credo")
+		.selectTitle("Mr")
+		.enterMiddleName()
+		.enterLastName("Systemz")
+		.selectGender("Male")
+		.enterUserName("Credo"+getRandomIntNumber(1000,10000))
+		.enterEmail("credo"+getRandomIntNumber(1000,10000)+"@credosystemz.com")
+		.enterPassword("Credo@123")
+		.enterEmploymentStatus("Part-time")
+		.enterAge("10/10/1980")
+		.enterMartialStatus("Married")
+		.enterNumberOfDependents("3")
+		.clickRegisterLink()
+		.verifyUserRegistration()
+		.clickOnLogin();
 	}
 	
 	public static int getRandomIntNumber(int min,int max) {
