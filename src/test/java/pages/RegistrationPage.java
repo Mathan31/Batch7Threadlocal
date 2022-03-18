@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import base.BaseClass;
@@ -21,7 +22,11 @@ public class RegistrationPage extends BaseClass{
 	private By oAge = By.id("age");
 	private By oMartialStatus = By.id("maritalStatus");
 	private By oNumberOfDependents = By.id("numberOfDependents");
+	private WebDriver driver;
 	
+	public RegistrationPage(WebDriver driver) {
+		this.driver = driver;
+	}
 	
 	public boolean verifyAllTheFields() {
 		if(driver.findElement(oUserName).isDisplayed() && driver.findElement(oPassword).isDisplayed()
@@ -97,12 +102,12 @@ public class RegistrationPage extends BaseClass{
 	
 	public EmailVerificationPage clickRegisterLink() {
 		driver.findElement(oRegister).click();
-		return new EmailVerificationPage();
+		return new EmailVerificationPage(driver);
 		}
 	
 	public LoginPage clickOnUILogo() {
 		driver.findElement(oUILogo).click();
-		return new LoginPage();
+		return new LoginPage(driver);
 	}
 	
 	

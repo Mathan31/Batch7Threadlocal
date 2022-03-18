@@ -9,12 +9,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+
+import utilities.ExcelReader;
+import utilities.PropertiesReader;
 
 public class BaseClass {
 	
-	 public static WebDriver driver;
+	 public WebDriver driver;
 	 int iBrowserType = 1; //1 - Chrome,2 - FF,3 - Edge,4 - IE
-	 String sURL = "https://uibank.uipath.com/";
+	 String propertyFile = "Environment_Details";
+	 String sURL = PropertiesReader.getPropertyValue(propertyFile, "production");
+	 public String excelFile = "";
 	
 	@BeforeClass
 	public  void invokeBrowser() {
@@ -63,6 +69,12 @@ public class BaseClass {
 	public  void closeBrowser() {
 		//driver.close();
 		driver.quit();
+	}
+	
+	@DataProvider(name = "TestCaseData")
+	public Object[][] excelData() {
+		Object[][] values = ExcelReader.getValueFromExcel(excelFile);
+		return values;
 	}
 
 }
