@@ -5,6 +5,8 @@
 		<classes>
 			<class name="testscenarios.TC001_Login" />
 			<class name="testscenarios.TC002_Registration" />
+			<class name="testscenarios.TC003_ApplyForNewAccount" />
+
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
