@@ -25,18 +25,11 @@ public class RegistrationPage extends BaseClass{
 	private By oAge = By.id("age");
 	private By oMartialStatus = By.id("maritalStatus");
 	private By oNumberOfDependents = By.id("numberOfDependents");
-	private WebDriver driver;
-	private SeleniumWrapper wrap;
 	
-	public RegistrationPage(WebDriver driver,ExtentTest node) {
-		this.driver = driver;
-		this.node = node;
-		wrap = new SeleniumWrapper(driver, node);
-	}
 	
 	public boolean verifyAllTheFields() {
-		if(wrap.verifyDisplayedwithReturn(driver.findElement(oUserName)) && wrap.verifyDisplayedwithReturn(driver.findElement(oPassword))
-				&& wrap.verifyDisplayedwithReturn(driver.findElement(oEmail))&& wrap.verifyDisplayedwithReturn(driver.findElement(oRegister))) {
+		if(verifyDisplayedwithReturn(getDriver().findElement(oUserName)) && verifyDisplayedwithReturn(getDriver().findElement(oPassword))
+				&& verifyDisplayedwithReturn(getDriver().findElement(oEmail))&& verifyDisplayedwithReturn(getDriver().findElement(oRegister))) {
 			return true;		
 		}else {
 			return false;
@@ -44,73 +37,73 @@ public class RegistrationPage extends BaseClass{
 	}
 	
 	public RegistrationPage enterFirstName(String firstName) {
-		wrap.type(driver.findElement(oFirstName),firstName);
+		type(getDriver().findElement(oFirstName),firstName);
 		return this;
 	}
 	
 	public RegistrationPage selectTitle(String title) {
-		wrap.selectDropDownUsingVisibleText(driver.findElement(oTitle), title);
+		selectDropDownUsingVisibleText(getDriver().findElement(oTitle), title);
 		return this;
 	}
 	
 	public RegistrationPage enterMiddleName() {
-		wrap.type(driver.findElement(oMiddleName),"");
+		type(getDriver().findElement(oMiddleName),"");
 		return this;
 	}
 	
 	public RegistrationPage enterLastName(String lastName) {
-		wrap.type(driver.findElement(oLastName),lastName);
+		type(getDriver().findElement(oLastName),lastName);
 		return this;
 	}
 	
 	public RegistrationPage selectGender(String gender) {
-		wrap.selectDropDownUsingVisibleText(driver.findElement(oGender), gender);
+		selectDropDownUsingVisibleText(getDriver().findElement(oGender), gender);
 		return this;
 	}
 	
 	public RegistrationPage enterUserName(String userName) {
-		wrap.type(driver.findElement(oUserName),userName);
+		type(getDriver().findElement(oUserName),userName);
 		return this;
 	}
 	
 	public RegistrationPage enterEmail(String email) {
-		wrap.type(driver.findElement(oEmail),email);
+		type(getDriver().findElement(oEmail),email);
 		return this;
 	}
 	
 	public RegistrationPage enterPassword(String password) {
-		wrap.type(driver.findElement(oPassword),password);
+		type(getDriver().findElement(oPassword),password);
 		return this;
 	}
 	
 	public RegistrationPage enterEmploymentStatus(String employmentStatus) {
-		wrap.selectDropDownUsingVisibleText(driver.findElement(oEmploymentStatus), employmentStatus);
+		selectDropDownUsingVisibleText(getDriver().findElement(oEmploymentStatus), employmentStatus);
 		return this;
 	}
 	
 	public RegistrationPage enterAge(String age) {
-		wrap.type(driver.findElement(oAge),age);
+		type(getDriver().findElement(oAge),age);
 		return this;	
 	}
 	
 	public RegistrationPage enterMartialStatus(String martialStatus) {
-		wrap.type(driver.findElement(oMartialStatus),martialStatus);
+		type(getDriver().findElement(oMartialStatus),martialStatus);
 		return this;
 	}
 	
 	public RegistrationPage enterNumberOfDependents(String noOfDependents) {
-		wrap.type(driver.findElement(oNumberOfDependents),noOfDependents);
+		type(getDriver().findElement(oNumberOfDependents),noOfDependents);
 		return this;
 	}
 	
 	public EmailVerificationPage clickRegisterLink() {
-		wrap.click(driver.findElement(oRegister));
-		return new EmailVerificationPage(driver,node);
+		click(getDriver().findElement(oRegister));
+		return new EmailVerificationPage();
 		}
 	
 	public LoginPage clickOnUILogo() {
-		wrap.click(driver.findElement(oUILogo));
-		return new LoginPage(driver,node);
+		click(getDriver().findElement(oUILogo));
+		return new LoginPage();
 	}
 	
 	

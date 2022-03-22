@@ -23,17 +23,17 @@ public class TC002_Registration extends BaseClass{
 	
 	@Test(priority = 1)
 	public void registrationFieldValidation() {
-		boolean result = new LoginPage(driver,node)
+		boolean result = new LoginPage()
 		.clickOnRegistrationLink()
 		.verifyAllTheFields();
-		new RegistrationPage(driver,node)
+		new RegistrationPage()
 		.clickOnUILogo();
 		Assert.assertTrue(result);
 	}
 	
 	@Test(priority = 2,dataProvider = "TestCaseData")
 	public void registrationWithMandatoryFields(String firstName,String lastName,String userName,String email,String password) {
-		new LoginPage(driver,node)
+		new LoginPage()
 		.clickOnRegistrationLink()
 		.enterFirstName(firstName)
 		.selectTitle("Mr")
@@ -50,7 +50,7 @@ public class TC002_Registration extends BaseClass{
 	
 	@Test(priority = 3)
 	public void registrationWithMandatoryAndOptionalFields() {
-		new LoginPage(driver,node)
+		new LoginPage()
 		.clickOnRegistrationLink()
 		.enterFirstName("Credo")
 		.selectTitle("Mr")

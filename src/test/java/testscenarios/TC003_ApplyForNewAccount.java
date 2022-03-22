@@ -25,7 +25,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 	
 	@Test(priority = 1)
 	public void ApplyForNewAccountValidation() {
-		boolean result = new LoginPage(driver,node)
+		boolean result = new LoginPage()
 		.typeUserName("ramnad")
 		.typePassword("kannakku234")
 		.clickSignOn()
@@ -33,7 +33,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 		.clickApplyForNewAccount()
 		.verifyAllTheAcctFields();
 		
-		new ApplyForNewAccountPage(driver,node)
+		new ApplyForNewAccountPage()
 		.clickApply()
 		.verifyAccountCreatePage()
 		
@@ -46,7 +46,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 	
 	@Test(priority = 2,dataProvider = "TestCaseData")
 	public void accountCreation(String accountNickName,String typeOfAccount) {
-		boolean result = new LoginPage(driver,node)
+		boolean result = new LoginPage()
 		.typeUserName("ramnad")
 		.typePassword("kannakku234")
 		.clickSignOn()
@@ -58,7 +58,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 		if (result) {
 			
 			System.out.println("Account Verified");
-			new ApplyPage(driver,node)
+			new ApplyPage()
 			.clickOnViewAccout(accountNickName)
 			.clickonLogout();
 			
@@ -66,49 +66,13 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 			
 		}else {
 			System.out.println("Account not much with the Given Name");
-			new ApplyPage(driver,node)
+			new ApplyPage()
 			.clickOnViewAccout()
 			.clickonLogout();
 			
 		}
 		
-		
-		
-//		.clickOnRegistrationLink()
-//		.enterFirstName(firstName)
-//		.selectTitle("Mr")
-//		.enterMiddleName()
-//		.enterLastName(lastName)
-//		.selectGender("Male")
-//		.enterUserName(userName+getRandomIntNumber(1000,10000))
-//		.enterEmail(email+getRandomIntNumber(1000,10000)+"@credosystemz.com")
-//		.enterPassword(password)
-//		.clickRegisterLink()
-//		.verifyUserRegistration()
-//		.clickOnLogin();
 	}
-	
-//	@Test(priority = 3)
-//	public void registrationWithMandatoryAndOptionalFields() {
-//		new LoginPage(driver)
-//		.clickOnRegistrationLink()
-//		.enterFirstName("Credo")
-//		.selectTitle("Mr")
-//		.enterMiddleName()
-//		.enterLastName("Systemz")
-//		.selectGender("Male")
-//		.enterUserName("Credo"+getRandomIntNumber(1000,10000))
-//		.enterEmail("credo"+getRandomIntNumber(1000,10000)+"@credosystemz.com")
-//		.enterPassword("Credo@123")
-//		.enterEmploymentStatus("Part-time")
-//		.enterAge("10/10/1980")
-//		.enterMartialStatus("Married")
-//		.enterNumberOfDependents("3")
-//		.clickRegisterLink()
-//		.verifyUserRegistration()
-//		.clickOnLogin();
-//	}
-	
 	public static int getRandomIntNumber(int min,int max) {
 		Random ran = new Random();
 		int result = ran.nextInt((max-min)+1)+min;
