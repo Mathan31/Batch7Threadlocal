@@ -16,11 +16,16 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 	@BeforeTest
 	public void testCaseSetUp() {
 		excelFile = "TC003";
+		authors = "Arun";
+		category = "Regression";
+		testCaseName = "New Saving Account";
+		testDescription = "Validating New Saving Account Functionality!!!";
+		module = "New Saving Account module";
 	}	
 	
 	@Test(priority = 1)
 	public void ApplyForNewAccountValidation() {
-		boolean result = new LoginPage(driver)
+		boolean result = new LoginPage(driver,node)
 		.typeUserName("ramnad")
 		.typePassword("kannakku234")
 		.clickSignOn()
@@ -28,7 +33,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 		.clickApplyForNewAccount()
 		.verifyAllTheAcctFields();
 		
-		new ApplyForNewAccountPage(driver)
+		new ApplyForNewAccountPage(driver,node)
 		.clickApply()
 		.verifyAccountCreatePage()
 		
@@ -41,7 +46,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 	
 	@Test(priority = 2,dataProvider = "TestCaseData")
 	public void accountCreation(String accountNickName,String typeOfAccount) {
-		boolean result = new LoginPage(driver)
+		boolean result = new LoginPage(driver,node)
 		.typeUserName("ramnad")
 		.typePassword("kannakku234")
 		.clickSignOn()
@@ -53,7 +58,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 		if (result) {
 			
 			System.out.println("Account Verified");
-			new ApplyPage(driver)
+			new ApplyPage(driver,node)
 			.clickOnViewAccout(accountNickName)
 			.clickonLogout();
 			
@@ -61,7 +66,7 @@ public class TC003_ApplyForNewAccount extends BaseClass{
 			
 		}else {
 			System.out.println("Account not much with the Given Name");
-			new ApplyPage(driver)
+			new ApplyPage(driver,node)
 			.clickOnViewAccout()
 			.clickonLogout();
 			

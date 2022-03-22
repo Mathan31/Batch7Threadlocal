@@ -3,20 +3,26 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import base.BaseClass;
+import libraries.SeleniumWrapper;
 
 public class EmailVerificationPage extends BaseClass {
 	
 	private By oWelcome = By.xpath("//h2[contains(text(),'Welcome To The UiBank Family!')]");
 	private By oLogin = By.linkText("Login");
 	private WebDriver driver;
+	private SeleniumWrapper wrap;
 	
-	public EmailVerificationPage(WebDriver driver) {
+	public EmailVerificationPage(WebDriver driver,ExtentTest node) {
 		this.driver = driver;
+		this.node =  node;
+		wrap = new SeleniumWrapper(driver, node);
 	}
 	
 	public EmailVerificationPage verifyUserRegistration() {
-		boolean displayed = driver.findElement(oWelcome).isDisplayed();
+		boolean displayed = wrap.verifyDisplayedwithReturn(driver.findElement(oWelcome));
 		if(displayed) {
 			System.out.println("User Registration is Successfull!!!");
 		}else {
@@ -26,8 +32,8 @@ public class EmailVerificationPage extends BaseClass {
 	} 
 	
 	public LoginPage clickOnLogin() {
-		driver.findElement(oLogin).click();
-		return new LoginPage(driver);
+		wrap.click(driver.findElement(oLogin));
+		return new LoginPage(driver,node);
 	}
 
 }

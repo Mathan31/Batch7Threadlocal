@@ -14,21 +14,26 @@ public class TC002_Registration extends BaseClass{
 	@BeforeTest
 	public void testCaseSetUp() {
 		excelFile = "TC002";
+		authors = "Sri";
+		category = "Sanity";
+		testCaseName = "User Registration";
+		testDescription = "Validating User Registration Functionality!!!";
+		module = "Registration module";
 	}	
 	
 	@Test(priority = 1)
 	public void registrationFieldValidation() {
-		boolean result = new LoginPage(driver)
+		boolean result = new LoginPage(driver,node)
 		.clickOnRegistrationLink()
 		.verifyAllTheFields();
-		new RegistrationPage(driver)
+		new RegistrationPage(driver,node)
 		.clickOnUILogo();
 		Assert.assertTrue(result);
 	}
 	
 	@Test(priority = 2,dataProvider = "TestCaseData")
 	public void registrationWithMandatoryFields(String firstName,String lastName,String userName,String email,String password) {
-		new LoginPage(driver)
+		new LoginPage(driver,node)
 		.clickOnRegistrationLink()
 		.enterFirstName(firstName)
 		.selectTitle("Mr")
@@ -45,15 +50,15 @@ public class TC002_Registration extends BaseClass{
 	
 	@Test(priority = 3)
 	public void registrationWithMandatoryAndOptionalFields() {
-		new LoginPage(driver)
+		new LoginPage(driver,node)
 		.clickOnRegistrationLink()
 		.enterFirstName("Credo")
 		.selectTitle("Mr")
 		.enterMiddleName()
 		.enterLastName("Systemz")
 		.selectGender("Male")
-		.enterUserName("Credo"+getRandomIntNumber(1000,10000))
-		.enterEmail("credo"+getRandomIntNumber(1000,10000)+"@credosystemz.com")
+		.enterUserName("Credo"+getRandomIntNumber(10000,100000))
+		.enterEmail("credo"+getRandomIntNumber(10000,100000)+"@credosystemz.com")
 		.enterPassword("Credo@123")
 		.enterEmploymentStatus("Part-time")
 		.enterAge("10/10/1980")

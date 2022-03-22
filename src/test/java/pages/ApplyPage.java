@@ -3,7 +3,10 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import base.BaseClass;
+import libraries.SeleniumWrapper;
 
 public class ApplyPage extends BaseClass {
 	
@@ -14,13 +17,16 @@ public class ApplyPage extends BaseClass {
 	private By oViewAccountBtn = By.xpath("//a[contains(text(),'Accounts')]");
 	
 	private WebDriver driver;
+	private SeleniumWrapper wrap;
 	
-	public ApplyPage(WebDriver driver) {
+	public ApplyPage(WebDriver driver,ExtentTest node) {
 		this.driver = driver;
+		this.node =  node;
+		wrap = new SeleniumWrapper(driver, node);
 	}
 	
 	public ApplyPage verifyAccountCreatePage() {
-		boolean displayed = driver.findElement(oWelcome).isDisplayed();
+		boolean displayed = wrap.verifyDisplayedwithReturn(driver.findElement(oWelcome));
 		if(displayed) {
 			System.out.println("User in Account created Page");
 
@@ -53,12 +59,12 @@ public class ApplyPage extends BaseClass {
 	//navigate back to home page
 	public HomePage clickOnViewAccout() {
 		driver.findElement(oViewAccountBtn).click();
-		return new HomePage(driver);
+		return new HomePage(driver,node);
 	}
 	
 	public HomePage clickOnViewAccout(String accountNickName) {
 		driver.findElement(oViewAccountBtn).click();
-		return new HomePage(driver, accountNickName);
+		return new HomePage(driver,node);
 	}
 
 }
