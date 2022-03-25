@@ -11,7 +11,7 @@ public abstract class HTMLReport {
 	
 	public static ExtentHtmlReporter html;
 	public static ExtentReports extent;
-	public ExtentTest test,node;
+	public ExtentTest test,node;  
 	public String authors,category;
 	public static ThreadLocal<ExtentTest> tlNode = new ThreadLocal<ExtentTest>();
 	

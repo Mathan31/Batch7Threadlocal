@@ -31,7 +31,7 @@ public class SeleniumWrapper extends HTMLReport{
 	
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 	
-	public WebDriver getDriver() {
+	public WebDriver getDriver() { 
 		return tlDriver.get();
 	}
 	

@@ -12,14 +12,13 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
-
 import libraries.SeleniumWrapper;
 import utilities.ExcelReader;
 import utilities.PropertiesReader;
-
+ 
 public class BaseClass extends SeleniumWrapper{
 	
-	 public WebDriver driver;
+	 public WebDriver driver; 
 	 int iBrowserType = 1; //1 - Chrome,2 - FF,3 - Edge,4 - IE
 	 String propertyFile = "Environment_Details";
 	 String sURL = PropertiesReader.getPropertyValue(propertyFile, "production");

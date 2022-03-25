@@ -11,7 +11,7 @@ public class TC001_Login extends BaseClass{
 	@BeforeTest
 	public void testCaseSetUp() {
 		excelFile = "TC001";
-		authors = "Ram";
+		authors = "Ramanan";
 		category = "Smoke";
 		testCaseName = "Login";
 		testDescription = "Validating Login Functionality!!!";
